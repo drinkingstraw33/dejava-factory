@@ -31,6 +31,9 @@ var Footer = {
     },
     setColor: function (color) {
     $('footer').css('color', color);
+    },
+    setBackgroundColor: function (color) {
+    $('footer').css('backgroundColor', color)
 }
 }
 
@@ -46,6 +49,7 @@ function nightDayHandler(self) {
         Footer.setInstarColor('#008453');
         Footer.setFaceColor('#522719');
         Footer.setColor('#626671');
+        Footer.setBackgroundColor('#272100');
     } else {
         self.value = '야간 모드로 전환';
         Outer.setTitleColor('gold');
@@ -56,5 +60,6 @@ function nightDayHandler(self) {
         Footer.setInstarColor('pink');
         Footer.setFaceColor('lightblue');
         Footer.setColor('gray');
+        Footer.setBackgroundColor('palegoldenrod');
     }
 }
