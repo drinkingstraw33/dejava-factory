@@ -221,50 +221,75 @@ button {
 
 /*layout*/
 
-#title {
-    background: gold;
-    padding: 10px;
-    position: fixed;
-    top: 0px;
+#wrap {
+    display: grid;
+    grid-template-rows: 60px 1fr 120px;
+    grid-template-columns: 180px 1fr;
+    grid-template-areas: 
+        "title title"
+        "header container"
+        "footer container";
     width: 100%;
-    height: 87px;
+    height: 100%;
+}
+
+#wrap.off {
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "title"
+        "container";
+}
+
+#title {
+    grid-area: title;
+    background: gold;
+    padding: 5px;
     z-index: 11;
 }
 
+#title #menutoggle {
+    position: absolute;
+    top: 10px;
+    left: 25px;
+    cursor: pointer;
+}
+
+#title #menutoggle img {
+    width: 40px;
+}
+
+#title #nighttoggle {
+    position: absolute;
+    top: 10px;
+    left: 80px;
+    cursor: pointer;
+}
+
+#title #nighttoggle img {
+    width: 40px;
+}
+
 #title h1 {
-    font-size: 45px;
+    font-size: 30px;
     font-weight: 800;
     text-align: center;
 }
 
-
-#wrap {
-    width: 100%;
-    height: 100%;
-    padding-left: 180px;
-}
-
 #wrap header {
-    position: fixed;
-    width: 180px;
-    height: 100%;
+    grid-area: header;
     background-color: palegoldenrod;
-    z-index: 11;
-    top: 87px;
-    left: 0px;
+    z-index: 10;
 }
 
-#wrap header nav {
-    width: 100%;
-    height: 100%;
+#wrap header.off {
+    width: 0;
 }
 
 #wrap header nav ul {
-    width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 25px;
     justify-content: flex-start;
 }
 
@@ -272,15 +297,20 @@ button {
     margin: 0 15px 10px 15px;
     padding-left: 15px;
     position: relative;
-}
-
-#wrap header nav ul li a {
     font-size: 16px;
     font-weight: 500;
     line-height: 30px;
 }
 
-#wrap header nav ul li:after {
+#wrap header.off nav ul li {
+    font-size: 0px;
+}
+
+#wrap header nav ul li a {
+    cursor: pointer;
+}
+
+#wrap header nav ul li a:after {
     content: "";
     display: block;
     width: 5px;
@@ -292,6 +322,10 @@ button {
     top: 13px;
 }
 
+#wrap header.off nav ul li a:after {
+    width: 0px;
+}
+
 #wrap header nav ul li:hover a {
     color: red;
 }
@@ -301,10 +335,8 @@ button {
 }
 
 #container {
-    margin: 87px 15px 0px 15px;
-    padding-top: 10px;
-    position: relative;
-
+    grid-area: container;
+    margin: 10px 15px 10px 15px;
 }
 
 #container p {
@@ -327,44 +359,27 @@ button {
 }
 
 #wrap footer {
-    width: 180px;
-    position: fixed;
-    left: 0px;
-    bottom: 0px;
-    padding: 5px;
+    position: relative;
+    grid-area: footer;
     font-size: 11px;
     color: gray;
+    background: palegoldenrod;
     z-index: 12;
 }
 
-#wrap footer nav {
-    width: 100%;
-    height: 100%;
-}
-
-#wrap footer nav input {
-    padding: 10px;
-    margin-left: 17px;
-}
-
-#wrap footer nav input:hover {
-    color: blue;
-}
-
 #wrap footer nav ul {
-    width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    margin-bottom: 5px;
 }
 
 #wrap footer nav ul li {
     margin: 5px;
-    padding-left: 5px;
     position: relative;
 }
 
-#wrap footer nav ul li a{
+#wrap footer nav ul li a {
     padding: 5px;
 }
 
@@ -376,32 +391,57 @@ button {
     background-color: lightblue
 }
 
-
-#wrap footer p {
+#wrap footer p{
     font-style: italic;
-    padding: 5px
+    margin-top: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#wrap footer.off{
+    display:none;}
+
+#wrap footer.off p{
+    display:none;
+}
+
+#wrap footer.off nav ul li a{
+    display:none;
 }
 
 @media(max-width:768px) {
-    #title {
-        position: absolute;
-    }
-
     #wrap {
-        min-height:100vh;
-        position: absolute;
-        padding-left: 0px;
-        padding-top: 180px;
+        grid-template-rows: 60px 160px 1fr 60px;
+        grid-template-columns: 1fr;
+        grid-template-areas: "title title"
+        "header header"
+        "container container"
+        "footer footer";
+    }
+    #title #menutoggle {
+        top: 16px;
+        left: 20px;
     }
 
-    #wrap header {
-        position: absolute;
-        width: 100%;
-        height: 180px;
-        top: 87px;
+    #title #menutoggle img {
+        width: 25px;
+    }
+
+    #title #nighttoggle {
+        top: 16px;
+        left: 53px;
+    }
+
+    #title #nighttoggle img {
+        width: 25px;
+    }
+
+    #wrap.off {
+        padding-top: 0px;
     }
 
     #wrap header nav ul {
+        margin-top: 5px;
         margin-bottom: 5px;
     }
 
@@ -409,31 +449,9 @@ button {
         margin: 0px 15px 0px 15px;
     }
     
-    #wrap header nav input{
-        position: absolute;
-        left: 0px;
-        bottom: 0px;
-    }
-
-    #wrap footer {
-        background-color: palegoldenrod;
-        width: 100%;
-        position: relative;
-        bottom: 0px;
+    #wrap footer{
         text-align: center;
+        background-color: lightgoldenrodyellow;
     }
-    
-    #wrap footer nav ul {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
 
-
-}
-    #wrap footer p {
-        margin-top: 0px;
-        margin-left: 5px;
-        padding: 0px
-    }
 }
