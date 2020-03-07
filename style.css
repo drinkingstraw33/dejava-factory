@@ -409,6 +409,33 @@ button {
     display:none;
 }
 
+table{
+    margin: 20px auto 20px 0;
+    width: 768px;
+}
+
+thead th{
+    background: goldenrod;
+    font-weight: 500;
+    font-size: 22px;
+    color: black;
+}
+
+tr{
+    background: gold;
+    margin-bottom: 5px;
+}
+
+th, td{
+    border: 2px solid #FFF;
+    color: black;
+    padding: 10px;
+    text-align: left;
+    font-size: 18px;
+    width: 33.33%;
+    text-align: center;
+}
+
 @media(max-width:768px) {
     #wrap {
         grid-template-rows: 60px 160px 1fr 60px;
@@ -454,4 +481,13 @@ button {
         background-color: lightgoldenrodyellow;
     }
 
+    table{
+        width: 100%;
+    }
+
+    iframe{
+        width: 100%;
+    }
+
 }
+
